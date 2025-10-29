@@ -1,0 +1,77 @@
+## **Proposal: Personality Fingerprinting of Persona-Prompted Large Language Models(draft)**
+
+### *Extending Construct Analysis to the Big Five Personality Inventory (BIG5)*
+
+---
+
+### **1. Background and Motivation**
+
+Prof. Simon Münker (...) paper 1. 
+
+In a related line of work, Münker (2025) examined **persona-based prompting** in the context of political ideology, using the *Moral Foundations Questionnaire (MFQ)* to assess alignment between model personas (e.g., “liberal” vs. “conservative”) and corresponding human prompt.
+
+This project proposes to **synthesize both methodologies** and apply them to a widely, domain-general personality framework: the **Big Five Inventory (BIG5)**.
+By integrating both methodologies, we aim to evaluate whether LLMs can reproduce human-like personality structures when conditioned with different personality descriptors.
+
+---
+
+### **2. Research Questions**
+
+We address the following research questions:
+
+**RQ1:** To what extent do the resulting LLM fingerprints align with the fingerprint structures observed in human subgroups characterized by distinct personality types?
+
+**RQ2:** How does persona-based prompting (e.g., “You are a Extraversion person”) affect the fingerprint structures of LLM responses?
+
+---
+
+### **3. Methodology**
+
+#### **3.1 Instrument**
+
+We employ the **Big Five Inventory (BIG5)**, a self-report scale measuring five core personality dimensions:
+*Openness, Conscientiousness, Extraversion, Agreeableness,* and *Neuroticism*.
+Each item is rated on a five-point scale where 1=Disagree, 3=Neutral, 5=Agree.
+
+#### **3.2 LLM Sampling**
+
+We will survey several open-weight models under two conditions:
+
+1. **Neutral condition:** baseline model responses with no persona instruction(TBD).
+2. **Persona condition:** contextually prompted with synthetic self-descriptions such as
+
+   * “You are an Extraversion person.”
+   * “You are an Neuroticism person.”
+
+Each model-persona will generate **1,000(TBD)** samples(Each sample corresponds to a complete response to all items of the BIG5).
+
+#### **3.3 Fingerprint Construction**
+
+For each model and persona, we compute the **psychological fingerprint**.
+
+
+#### **3.4 Human Baseline**
+
+We will use publicly available **human datasets** as baseline (e.g., [OpenPsychometrics.org](https://www.kaggle.com/datasets/tunguz/big-five-personality-test/data)) to generate reference fingerprints for various personality subgroups.
+
+#### **3.5 Cross-Comparison**
+
+Each fingerprint compared using **cosine similarity**. This quantifies structural similarity between LLM and human fingerprints.
+
+We will also use further comparison methods like those in paper1.
+
+---
+
+### **4. Expected Contributions**
+
+1. **Methodological Integration:** Combine fingerprinting with persona prompting in a unified framework.
+2. **Construct Representation Analysis:** Provide the systematic evaluation of how LLMs represent **personality constructs**, not just humor or morality.
+3. **Persona Influence Assessment:** Quantify how self-assigned personas prompt alter the fingerprint structure.
+4. **Cross-Human Alignment Metrics:** Compare the fingerprint structures of human subgroups and LLMs to evaluate the degree of alignment in psychological construct representation.
+
+---
+
+### **5. References**
+
+* Prof. Simon Münker's two paper
+* Tunguz, V. (2018). Big Five Personality Test Data [Data set]. Kaggle. https://www.kaggle.com/datasets/tunguz/big-five-personality-test/data
