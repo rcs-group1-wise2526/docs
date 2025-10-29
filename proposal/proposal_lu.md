@@ -8,7 +8,7 @@
 
 Prof. Simon Münker (...) paper 1. 
 
-In a related line of work, Münker (2025) examined persona-based prompting in the context of political ideology, using the Moral Foundations Questionnaire (MFQ) to evaluate whether model personas (e.g., “liberal” vs. “conservative”) produce response distributions consistent with those of corresponding human.
+In a related line of work, Münker (2025) examined persona-based prompting in the context of political ideology, using the Moral Foundations Questionnaire (MFQ) to evaluate whether model personas (e.g., “liberal” vs. “conservative”) produce response distributions consistent with those of corresponding human participants.
 
 This project proposes to **synthesize both methodologies** and apply them to a widely, domain-general personality framework: the **Big Five Inventory (BIG5)**.
 By integrating both methodologies, we aim to evaluate whether LLMs can reproduce human-like personality structures when conditioned with different personality descriptors.
