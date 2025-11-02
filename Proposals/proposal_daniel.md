@@ -1,6 +1,6 @@
 ## Proposal: Assessing the Political Alignment of Thought of Explicitly Biased LLMs
 
-### Determining whether LLMs trained towards providing explicitly biased responses will be more internally consistent in their held beliefs
+### Determining whether LLMs trained towards providing explicitly biased responses will be more internally consistent in their held beliefs.
 
 ---
 
