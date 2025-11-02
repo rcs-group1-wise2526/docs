@@ -1,11 +1,13 @@
-## **Proposal: Assessing the Political Alignment of Thought of Explicitly Biased LLMs**
+## Proposal: Assessing the Political Alignment of Thought of Explicitly Biased LLMs
 
-### *Determining whether LLMs trained towards providing explicitly biased responses will be more internally consistent in their held beliefs*
+### Determining whether LLMs trained towards providing explicitly biased responses will be more internally consistent in their held beliefs
 
 ---
 
-### **1. Background and Motivation**
+### 1. Background and Motivation 
+
 The paper "Political Bias in LLMs: Unaligned Moral Values in Agent-centric Simulations," (2025) posits that LLMs, even when given in-context content to try to align them towards a specific political or moral framework, are generally ineffective at maintaining internal belief consistency that aligns with human respondents. A natural extension of this observation, however, is the question of whether an LLM made to be explicitly biased towards a particular political or moral framework will hold greater internal belief consistency and produce outputs that closely align with a respective human group.
+
 ---
 
 ### **2. Research Question(s)**
