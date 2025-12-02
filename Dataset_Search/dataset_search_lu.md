@@ -1,10 +1,32 @@
 
-# 📂 BFI-2 Dataset Update: Spanish & Swedish Versions
+# 📂 BFI-2 Dataset Update: Chinese & Spanish & Swedish Versions
 
-So far, I have successfully located the **Spanish** and **Swedish** versions of the BFI-2 (Big Five Inventory-2). Both resources include the critical materials: **raw item-level human data**, and the **translated version BFI-2  questionnaires**.
+So far, I have successfully located the **Chinese**, **Spanish** and **Swedish** versions of the BFI-2 (Big Five Inventory-2). All datasets include the critical materials: **raw item-level human data**, and the **translated version BFI-2  questionnaires**.
+
+@InTheRegressionProfession first located the [paper](https://journals.sagepub.com/doi/abs/10.1177/10731911211008245?__cf_chl_rt_tk=C5R0btcWB_cClowQ9yYDY0.e1xBbbD4c_.BqgABCNIw-1763919589-1.0.1.1-VvCxN3j56zkQSXaXbnokxR.8frUeBCfWAudOsyz9xnY), which indicated the existence of Chinese BFI-2 human respondent data. Based on that lead, I located the corresponding dataset.
 
 Below are the details and direct download links for each dataset.
-## 🇪🇸 1. Spanish Version
+
+## 🇨🇳 1. Chinese Version
+
+### Content Details
+
+* **Data:** Raw item-level responses for all 60 items
+* **Samples:**
+  * College students
+  * Adult employees
+  * Adolescents
+  * Adults treated for substance use
+* **Format:** sav
+
+Zhang, B., Li, Y. M., Li, J., Luo, J., Ye, Y., Yin, L., Chen, Z., Soto, C. J., & John, O. P. (2021). The Big Five Inventory–2 in China: A Comprehensive Psychometric Evaluation in Four Diverse Samples. Assessment, 29(6), 1262-1284. https://doi.org/10.1177/10731911211008245 (Original work published 2022)
+
+### Access & Download
+
+* **📥 Data & Materials:** 
+[OSF](https://osf.io/bjfdc/overview?view_only=5942590d234d458aba06eaff75167955)
+
+## 🇪🇸 2. Spanish Version
 
 ### Content Details
 
@@ -19,7 +41,7 @@ Gallardo-Pujol, D., Rouco, V., Cortijos-Bernabeu, A., Oceja, L., Soto, C. J., & 
 
   * **📥 Data & Materials:** [OSF - Spanish Adaptation of the BFI-2](https://osf.io/kp572/overview)
 
-## 🇸🇪 2. Swedish Version
+## 🇸🇪 3. Swedish Version
 
 ### Content Details
 
