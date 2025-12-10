@@ -1,0 +1,16 @@
+"dataset","domain","alpha"
+"human_src","Extraversion",0.93023420027982
+"human_src","Agreeableness",0.937146806687425
+"human_src","Conscientiousness",0.936827602677813
+"human_src","Neuroticism",0.938917716023031
+"human_src","Openness",0.932018985608354
+"llm_src","Extraversion",0.956495398074987
+"llm_src","Agreeableness",0.959845848717198
+"llm_src","Conscientiousness",0.956686439474112
+"llm_src","Neuroticism",0.956652016599359
+"llm_src","Openness",0.954383689755282
+"llm_tgt","Extraversion",0.876670149493876
+"llm_tgt","Agreeableness",0.871998721906037
+"llm_tgt","Conscientiousness",0.875404293745364
+"llm_tgt","Neuroticism",0.883615850752909
+"llm_tgt","Openness",0.86540768872406
