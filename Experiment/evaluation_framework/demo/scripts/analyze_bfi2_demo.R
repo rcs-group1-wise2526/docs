@@ -103,18 +103,17 @@ ega_summary_list <- lapply(names(datasets), function(name) {
   df <- datasets[[name]]
   
   tryCatch({
-    ega_obj <- EGAnet::EGA(df, plot.EGA = TRUE) 
-    
     pdf_path <- file.path(RESULTS_DIR, paste0("ega.", name, ".pdf"))
-    pdf(pdf_path, width = 10, height = 10)
-    print(ega_obj$plot.EGA)
-    dev.off()
-    message("Saved EGA plot to ", pdf_path)
-    
-    n_dim <- ega_obj$n.dim
+    grDevices::pdf(pdf_path, width = 10, height = 10, onefile = FALSE)
 
-    data.frame(dataset = name, n_dimensions = n_dim)
+    ega_obj <- EGAnet::EGA(df, plot.EGA = TRUE)
+
+    grDevices::dev.off()
+    message("Saved EGA plot to ", pdf_path)
+
+    data.frame(dataset = name, n_dimensions = ega_obj$n.dim)
   }, error = function(e) {
+    if (length(grDevices::dev.list())) grDevices::dev.off()
     message("EGA failed for ", name, ": ", e$message)
     return(NULL)
   })

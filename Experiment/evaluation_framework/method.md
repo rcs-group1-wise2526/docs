@@ -87,17 +87,13 @@ where $L = I(I-1)/2$ is the length of the vectorized upper-triangle (excluding t
 ### Step A4: Structural recovery via Exploratory Graph Analysis (EGA)
 EGA then detects communities (clusters) corresponding to latent constructs.
 
-For each dataset $D$:
-
-1. Estimating a network of partial correlations using the graphical LASSO algorithm with EBIC model selection (Friedman et al., 2008)
-2. Applying the Walktrap community detection algorithm to identify clusters of items (Pons and Latapy, 2005)
-3. Determining the number of dimensions (factors) automatically based on the identified communities
-
 Evaluation theory:
 - Count match: does latent constructs identified in LLM responses align with theoretical constructs in BFI-2?
 
 Cross-dataset comparison:
 - Compare clustering solutions across datasets (e.g., latent constructs consistency).
+
+Draw the plot
 
 ### Step A5: Reliability via Cronbach’s alpha (internal consistency)
 Compute internal consistency per domain by Cronbach’s alpha, providing insight into whether the items consistently measure the same underlying construct.
