@@ -4,8 +4,8 @@
 if (!require(psych)) stop("Package 'psych' is required")
 if (!require(EGAnet)) stop("Package 'EGAnet' is required")
 
-DATA_DIR <- "Experiment/Metric/demo/outputs/simulated_data"
-OUTPUT_DIR <- "Experiment/Metric/demo/outputs/results"
+DATA_DIR <- "Experiment/evaluation_framework/demo/outputs/simulated_data"
+OUTPUT_DIR <- "Experiment/evaluation_framework/demo/outputs/results"
 RESULTS_DIR <- OUTPUT_DIR
 
 if (!dir.exists(OUTPUT_DIR)) {
@@ -57,7 +57,7 @@ fingerprints <- lapply(datasets, function(df) {
 })
 
 # Pairwise comparisons (Reference: human_src)
-ref_name <- "human_src"
+ref_name <- "llm_src"
 if (ref_name %in% names(datasets)) {
   similarities <- do.call(rbind, lapply(names(datasets), function(name) {
     if (name == ref_name) return(NULL)
