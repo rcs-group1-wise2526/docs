@@ -58,24 +58,21 @@ For each dataset $D$ (e.g., LLM-src, LLM-tgt, Human-src), compute a $Q \times Q$
 
 ### Step A2: Build the “fingerprint vector”
 Convert the correlation matrix into a vector representation. Extract the upper triangle (excluding the diagonal):
- 
- Let $\tilde{\mathbf{C}}_x = \mathrm{vec}(\mathbf{C}_x)$ denote the vectorized form of the (upper-triangular, excluding the diagonal) item–item correlation matrix:
-$$
-\tilde{\mathbf{C}}_x = \mathrm{vec}(\mathbf{C}_x) = [c_{1,2}, c_{1,3}, \ldots, c_{1,I}, c_{2,3}, \ldots, c_{I-1,I}]^\top .
-$$
 
-This is the dataset’s structural fingerprint.
+Let $\tilde{\mathbf{C}}_x = \mathrm{vec}(\mathbf{C}_x)$ denote the vectorized form of the (upper-triangular, excluding the diagonal) item–item correlation matrix:
+
+$$
+\tilde{\mathbf{C}}_x = \mathrm{vec}(\mathbf{C}_x) = [c_{1,2}, c_{1,3}, \dots, c_{1,I}, c_{2,3}, \dots, c_{I-1,I}]^\top .
+$$
 
 ### Step A3: Compare fingerprints with cosine similarity
 We compute fingerprint similarity between two datasets $x_1$ and $x_2$ using cosine similarity: (e.g., LLM-src vs Human-src):
 
 $$
-\mathrm{sim}(\tilde{\mathbf{C}}_{x_1}, \tilde{\mathbf{C}}_{x_2})
-=
-\frac{\sum_{k=1}^{L} \tilde{\mathbf{C}}_{x_1,k}\,\tilde{\mathbf{C}}_{x_2,k}}
-{\sqrt{\sum_{k=1}^{L} (\tilde{\mathbf{C}}_{x_1,k})^2}\;\sqrt{\sum_{k=1}^{L} (\tilde{\mathbf{C}}_{x_2,k})^2}} \in [-1,1],
+\mathrm{sim}(\tilde{\mathbf{C}}_{x_1}, \tilde{\mathbf{C}}_{x_2}) = \frac{\sum_{k=1}^{L} \tilde{\mathbf{C}}_{x_1,k} \tilde{\mathbf{C}}_{x_2,k}}{\sqrt{\sum_{k=1}^{L} (\tilde{\mathbf{C}}_{x_1,k})^2} \sqrt{\sum_{k=1}^{L} (\tilde{\mathbf{C}}_{x_2,k})^2}} \in [-1, 1],
 $$
-where $L = I(I-1)/2$ is the length of the vectorized upper-triangle (excluding the diagonal).
+
+where $L = I(I - 1)/2$ is the length of the vectorized upper-triangle (excluding the diagonal).
 
 
 
@@ -113,26 +110,21 @@ $$
 For two datasets $D_1, D_2$:
 
 $$
-W_1(D_1,D_2;q)
-=
-\sum_{k=1}^{4}
-\left|
-\sum_{i=1}^{k} D^{(D_1)}(q,i) - \sum_{i=1}^{k} D^{(D_2)}(q,i)
-\right|.
+W_1(D_1, D_2; q) = \sum_{k=1}^{4} \left| \sum_{i=1}^{k} D^{(D_1)}(q, i) - \sum_{i=1}^{k} D^{(D_2)}(q, i) \right|.
 $$
 
 ### Step B3: Alignment score
 
 $$
-A(q) = 1 - \frac{W_1(D_1,D_2;q)}{4}.
+A(q) = 1 - \frac{W_1(D_1, D_2; q)}{4}.
 $$
 
 Aggregate:
-- Global:
-  $$
-  A_{\text{total}} = \frac{1}{Q}\sum_{q=1}^{Q} A(q).
-  $$
-- Domain-level: average $A(q)$ within each BFI-2 domain.
+
+* Global:
+  $\displaystyle A_{\text{total}} = \frac{1}{Q} \sum_{q=1}^{Q} A(q).$
+
+* Domain-level: average $A(q)$ within each BFI-2 domain.
 
 ## Conclusion Interpretation
 
