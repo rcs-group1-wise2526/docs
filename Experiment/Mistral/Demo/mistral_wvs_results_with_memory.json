@@ -1,0 +1,929 @@
+{
+  "1": {
+    "question": "I am very disorganized.",
+    "type": "numeric",
+    "responses": [
+      "5",
+      "5",
+      "5"
+    ]
+  },
+  "2": {
+    "question": "I am very organized.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "7",
+      "6"
+    ]
+  },
+  "3": {
+    "question": "I am almost always lazy.",
+    "type": "numeric",
+    "responses": [
+      "3",
+      "3",
+      "4"
+    ]
+  },
+  "4": {
+    "question": "I am almost never lazy.",
+    "type": "numeric",
+    "responses": [
+      "6",
+      "6",
+      "7"
+    ]
+  },
+  "5": {
+    "question": "I am not at all dependable, steady.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "3"
+    ]
+  },
+  "6": {
+    "question": "I am very dependable, steady.",
+    "type": "numeric",
+    "responses": [
+      "8",
+      "8",
+      "8"
+    ]
+  },
+  "7": {
+    "question": "I am not at all systematic, almost never keep things in order.",
+    "type": "numeric",
+    "responses": [
+      "5",
+      "5",
+      "4"
+    ]
+  },
+  "8": {
+    "question": "I am very systematic, almost always keep things in order.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "7",
+      "7"
+    ]
+  },
+  "9": {
+    "question": "I am almost always careless.",
+    "type": "numeric",
+    "responses": [
+      "3",
+      "3",
+      "3"
+    ]
+  },
+  "10": {
+    "question": "I am almost never careless.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "7",
+      "7"
+    ]
+  },
+  "11": {
+    "question": "I almost never keep things neat and tidy.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "4"
+    ]
+  },
+  "12": {
+    "question": "I almost always keep things neat and tidy.",
+    "type": "numeric",
+    "responses": [
+      "6",
+      "7",
+      "7"
+    ]
+  },
+  "13": {
+    "question": "I am very inefficient, get things done very slowly.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "3",
+      "3"
+    ]
+  },
+  "14": {
+    "question": "I am very efficient, get things done very quickly.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "7",
+      "7"
+    ]
+  },
+  "15": {
+    "question": "I am very unreliable, can almost never be counted on.",
+    "type": "numeric",
+    "responses": [
+      "3",
+      "3",
+      "3"
+    ]
+  },
+  "16": {
+    "question": "I am very reliable, can almost always be counted on.",
+    "type": "numeric",
+    "responses": [
+      "8",
+      "8",
+      "8"
+    ]
+  },
+  "17": {
+    "question": "I almost always leave a mess, almost never clean up.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "4"
+    ]
+  },
+  "18": {
+    "question": "I almost never leave a mess, almost always clean up.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "7",
+      "7"
+    ]
+  },
+  "19": {
+    "question": "I am not at all persistent, hardly ever work until the task is finished.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "5",
+      "5"
+    ]
+  },
+  "20": {
+    "question": "I am very persistent, almost always work until the task is finished.",
+    "type": "numeric",
+    "responses": [
+      "8",
+      "7",
+      "7"
+    ]
+  },
+  "21": {
+    "question": "I almost always behave irresponsibly.",
+    "type": "numeric",
+    "responses": [
+      "3",
+      "3",
+      "3"
+    ]
+  },
+  "22": {
+    "question": "I almost never behave irresponsibly.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "7",
+      "8"
+    ]
+  },
+  "23": {
+    "question": "I am very reserved, unsociable.",
+    "type": "numeric",
+    "responses": [
+      "5",
+      "4",
+      "5"
+    ]
+  },
+  "24": {
+    "question": "I am very outgoing, sociable.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "7",
+      "7"
+    ]
+  },
+  "25": {
+    "question": "I am very assertive.",
+    "type": "numeric",
+    "responses": [
+      "6",
+      "6",
+      "6"
+    ]
+  },
+  "26": {
+    "question": "I almost never feel excited or eager.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "4"
+    ]
+  },
+  "27": {
+    "question": "I almost always feel excited or eager.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "7",
+      "7"
+    ]
+  },
+  "28": {
+    "question": "I am almost always quiet.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "5",
+      "5"
+    ]
+  },
+  "29": {
+    "question": "I am almost never quiet.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "6",
+      "6"
+    ]
+  },
+  "30": {
+    "question": "I am very submissive, almost always act as a follower.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "4"
+    ]
+  },
+  "31": {
+    "question": "I am very dominant, almost always act as a leader.",
+    "type": "numeric",
+    "responses": [
+      "6",
+      "6",
+      "6"
+    ]
+  },
+  "32": {
+    "question": "I am almost always shy, introverted.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "4"
+    ]
+  },
+  "33": {
+    "question": "I am almost never shy, introverted.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "6",
+      "7"
+    ]
+  },
+  "34": {
+    "question": "I find it very hard to influence people.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "5"
+    ]
+  },
+  "35": {
+    "question": "I find it very easy to influence people.",
+    "type": "numeric",
+    "responses": [
+      "6",
+      "6",
+      "6"
+    ]
+  },
+  "36": {
+    "question": "I am almost never full of energy.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "4"
+    ]
+  },
+  "37": {
+    "question": "I am almost always full of energy.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "6",
+      "7"
+    ]
+  },
+  "38": {
+    "question": "I am very talkative.",
+    "type": "numeric",
+    "responses": [
+      "6",
+      "6",
+      "6"
+    ]
+  },
+  "39": {
+    "question": "I am not at all talkative.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "5"
+    ]
+  },
+  "40": {
+    "question": "I show almost no enthusiasm.",
+    "type": "numeric",
+    "responses": [
+      "3",
+      "3",
+      "4"
+    ]
+  },
+  "41": {
+    "question": "I have almost no artistic interests.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "5"
+    ]
+  },
+  "42": {
+    "question": "I am curious about almost nothing.",
+    "type": "numeric",
+    "responses": [
+      "3",
+      "3",
+      "3"
+    ]
+  },
+  "43": {
+    "question": "I am curious about almost everything.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "7",
+      "7"
+    ]
+  },
+  "44": {
+    "question": "I am not at all inventive, almost never find clever ways to do things.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "4"
+    ]
+  },
+  "45": {
+    "question": "I am very inventive, almost always find clever ways to do things.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "6",
+      "7"
+    ]
+  },
+  "46": {
+    "question": "I am not at all fascinated by art, music, or literature.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "4"
+    ]
+  },
+  "47": {
+    "question": "I am very much fascinated by art, music or literature.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "7",
+      "7"
+    ]
+  },
+  "48": {
+    "question": "I almost always avoid intellectual, philosophical discussions.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "3",
+      "4"
+    ]
+  },
+  "49": {
+    "question": "I almost always seek out intellectual, philosophical discussions.",
+    "type": "numeric",
+    "responses": [
+      "6",
+      "6",
+      "7"
+    ]
+  },
+  "50": {
+    "question": "I have very little creativity.",
+    "type": "numeric",
+    "responses": [
+      "3",
+      "4",
+      "4"
+    ]
+  },
+  "51": {
+    "question": "I am not at all complex, almost never a deep thinker.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "5"
+    ]
+  },
+  "52": {
+    "question": "I am very complex, almost always a deep thinker.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "7",
+      "7"
+    ]
+  },
+  "53": {
+    "question": "I have almost no difficulty imagining things.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "7",
+      "7"
+    ]
+  },
+  "54": {
+    "question": "I think poetry and plays are very boring.",
+    "type": "numeric",
+    "responses": [
+      "3",
+      "3",
+      "4"
+    ]
+  },
+  "55": {
+    "question": "I think poetry and plays are very interesting.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "7",
+      "7"
+    ]
+  },
+  "56": {
+    "question": "I have almost no interest in abstract ideas.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "3",
+      "4"
+    ]
+  },
+  "57": {
+    "question": "I am not at all original, almost never come up with new ideas.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "4"
+    ]
+  },
+  "58": {
+    "question": "I am very original, almost always come up with new ideas.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "7",
+      "7"
+    ]
+  },
+  "59": {
+    "question": "I am not at all compassionate, almost never soft-hearted.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "3",
+      "3"
+    ]
+  },
+  "60": {
+    "question": "I am very compassionate, almost always soft-hearted.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "8",
+      "8"
+    ]
+  },
+  "61": {
+    "question": "I am very disrespectful, almost never treat others with respect.",
+    "type": "numeric",
+    "responses": [
+      "3",
+      "3",
+      "3"
+    ]
+  },
+  "62": {
+    "question": "I am very respectful, almost always treat others with respect.",
+    "type": "numeric",
+    "responses": [
+      "8",
+      "8",
+      "8"
+    ]
+  },
+  "63": {
+    "question": "I almost always find fault with others.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "4"
+    ]
+  },
+  "64": {
+    "question": "I almost never find fault with others.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "7",
+      "7"
+    ]
+  },
+  "65": {
+    "question": "I feel almost no sympathy for others.",
+    "type": "numeric",
+    "responses": [
+      "3",
+      "3",
+      "3"
+    ]
+  },
+  "66": {
+    "question": "I almost always start arguments with others.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "4"
+    ]
+  },
+  "67": {
+    "question": "I almost never start arguments with others.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "7",
+      "7"
+    ]
+  },
+  "68": {
+    "question": "I have a very unforgiving nature.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "4"
+    ]
+  },
+  "69": {
+    "question": "I have a very forgiving nature.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "7",
+      "7"
+    ]
+  },
+  "70": {
+    "question": "I am very helpful and unselfish with others.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "7",
+      "7"
+    ]
+  },
+  "71": {
+    "question": "I am almost always rude to others.",
+    "type": "numeric",
+    "responses": [
+      "3",
+      "3",
+      "3"
+    ]
+  },
+  "72": {
+    "question": "I am almost never rude to others.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "7",
+      "8"
+    ]
+  },
+  "73": {
+    "question": "I am very suspicious of others’ intentions.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "4"
+    ]
+  },
+  "74": {
+    "question": "I am very trusting of others’ intentions.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "7",
+      "7"
+    ]
+  },
+  "75": {
+    "question": "I am very cold and uncaring.",
+    "type": "numeric",
+    "responses": [
+      "3",
+      "3",
+      "3"
+    ]
+  },
+  "76": {
+    "question": "I am very warm and caring.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "7",
+      "8"
+    ]
+  },
+  "77": {
+    "question": "I am very impolite, discourteous to others.",
+    "type": "numeric",
+    "responses": [
+      "3",
+      "3",
+      "3"
+    ]
+  },
+  "78": {
+    "question": "I am very polite, courteous to others.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "7",
+      "8"
+    ]
+  },
+  "79": {
+    "question": "I almost never assume the best about people.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "4"
+    ]
+  },
+  "80": {
+    "question": "I almost always assume the best about people.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "7",
+      "7"
+    ]
+  },
+  "81": {
+    "question": "I am very relaxed, handle stress very well.",
+    "type": "numeric",
+    "responses": [
+      "6",
+      "6",
+      "6"
+    ]
+  },
+  "82": {
+    "question": "I am very tense, handle stress very poorly.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "4"
+    ]
+  },
+  "83": {
+    "question": "I stay very optimistic after experiencing a setback.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "6",
+      "7"
+    ]
+  },
+  "84": {
+    "question": "I become very pessimistic after experiencing a setback.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "3"
+    ]
+  },
+  "85": {
+    "question": "I am not at all moody, almost never have up and down mood swings.",
+    "type": "numeric",
+    "responses": [
+      "6",
+      "6",
+      "7"
+    ]
+  },
+  "86": {
+    "question": "I am very moody, almost always have up and down mood swings.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "3"
+    ]
+  },
+  "87": {
+    "question": "I am almost never tense.",
+    "type": "numeric",
+    "responses": [
+      "6",
+      "6",
+      "7"
+    ]
+  },
+  "88": {
+    "question": "I am almost always tense.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "3"
+    ]
+  },
+  "89": {
+    "question": "I feel very secure, comfortable with self.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "6",
+      "7"
+    ]
+  },
+  "90": {
+    "question": "I feel very insecure, uncomfortable with self.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "3"
+    ]
+  },
+  "91": {
+    "question": "I am very emotionally stable, very hard to upset.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "6",
+      "7"
+    ]
+  },
+  "92": {
+    "question": "I am very emotionally unstable, very easy to upset.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "3"
+    ]
+  },
+  "93": {
+    "question": "I worry very little.",
+    "type": "numeric",
+    "responses": [
+      "6",
+      "6",
+      "7"
+    ]
+  },
+  "94": {
+    "question": "I almost never feel sad.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "6",
+      "7"
+    ]
+  },
+  "95": {
+    "question": "I almost always feel sad.",
+    "type": "numeric",
+    "responses": [
+      "3",
+      "4",
+      "3"
+    ]
+  },
+  "96": {
+    "question": "I almost always keep my emotions under control.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "6",
+      "7"
+    ]
+  },
+  "97": {
+    "question": "I almost never keep my emotions under control.",
+    "type": "numeric",
+    "responses": [
+      "3",
+      "4",
+      "3"
+    ]
+  },
+  "98": {
+    "question": "I almost never feel anxious or afraid.",
+    "type": "numeric",
+    "responses": [
+      "6",
+      "6",
+      "7"
+    ]
+  },
+  "99": {
+    "question": "I almost always feel anxious or afraid.",
+    "type": "numeric",
+    "responses": [
+      "4",
+      "4",
+      "3"
+    ]
+  },
+  "100": {
+    "question": "I almost never feel depressed, blue.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "6",
+      "7"
+    ]
+  },
+  "101": {
+    "question": "I almost always feel depressed, blue.",
+    "type": "numeric",
+    "responses": [
+      "3",
+      "4",
+      "3"
+    ]
+  },
+  "102": {
+    "question": "I am not at all temperamental, almost never get emotional.",
+    "type": "numeric",
+    "responses": [
+      "7",
+      "6",
+      "7"
+    ]
+  },
+  "103": {
+    "question": "I am very temperamental, very often get emotional.",
+    "type": "numeric",
+    "responses": [
+      "3",
+      "4",
+      "3"
+    ]
+  }
+}
