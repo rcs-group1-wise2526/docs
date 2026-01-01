@@ -7,8 +7,7 @@ import time
 
 # Configuration
 client = OpenAI(api_key="API KEY")
-model = 'gpt-4.1' 
-max_tokens = 256
+model = 'gpt-5.1' 
 temperature = 1 
 
 
@@ -39,7 +38,6 @@ def call_model(model_input):
             response = client.chat.completions.create(
                 model=model,
                 messages=model_input,
-                max_tokens=max_tokens,
                 temperature=temperature,
             )
             return response.choices[0].message.content.strip()
@@ -90,7 +88,7 @@ def run_single_survey(items):
 
 # RUN MULTIPLE SURVEYS (RESET MEMORY EACH RUN)
 
-def run_many_surveys(csv_path, n_runs=1000):
+def run_many_surveys(csv_path, n_runs=100):
     df = pd.read_csv(csv_path)
     items = df["question"].tolist()
 
@@ -114,6 +112,6 @@ def save_results(results, outfile="GPT_bfi2_results_es.json"):
 
 
 if __name__ == "__main__":
-    results = run_many_surveys("BFI2_questions_GPT_es.csv", n_runs=1000)
+    results = run_many_surveys("BFI2_questions_GPT_es.csv", n_runs=100)
     save_results(results)
     print("All runs completed successfully.")

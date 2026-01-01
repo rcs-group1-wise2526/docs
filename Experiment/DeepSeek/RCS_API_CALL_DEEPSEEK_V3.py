@@ -1,17 +1,19 @@
 import requests
 import json
-from openai import OpenAI
 import pandas as pd
 import time
 
 
-# Configuration
-client = OpenAI(api_key="API KEY")
-model = 'gpt-5.1' 
-temperature = 1 
+# API CONFIGURATION
+
+API_KEY = "DEEPSEEK_API_KEY_HERE"
+DEEPSEEK_URL = "https://api.deepseek.com/v1/chat/completions"
 
 
-def prompt(item_text):
+
+# BFI-2 PROMPT GENERATOR (MINIMAL + RIGOROUS)
+
+def build_bfi2_prompt(item_text):
 
     system_prompt = (
         "This is a personality questionnaire.\n"
@@ -31,19 +33,28 @@ def prompt(item_text):
 
 
 
-# GPT API Call
+# DEEPSEEK API CALLER
 
-def call_model(model_input):
-    try:
-            response = client.chat.completions.create(
-                model=model,
-                messages=model_input,
-                temperature=temperature,
-            )
-            return response.choices[0].message.content.strip()
-    except Exception as e:
-        print(f"Error for prompt '{prompt}': {e}")
-        return "ERROR"
+def ask_deepseek(messages, temperature=0.0):
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {API_KEY}"
+    }
+
+    payload = {
+        "model": "deepseek-chat",
+        "messages": messages,
+        "temperature": temperature
+    }
+
+    response = requests.post(
+        DEEPSEEK_URL,
+        headers=headers,
+        data=json.dumps(payload)
+    )
+    response.raise_for_status()
+
+    return response.json()["choices"][0]["message"]["content"].strip()
 
 
 
@@ -51,7 +62,7 @@ def call_model(model_input):
 
 def run_single_survey(items):
     # Extract system prompt once
-    system_prompt_only = prompt("")[0]["content"]
+    system_prompt_only = build_bfi2_prompt("")[0]["content"]
 
     # Start fresh memory for this run
     conversation = [
@@ -62,7 +73,7 @@ def run_single_survey(items):
 
     for item_text in items:
         # Build only the user prompt
-        user_prompt_only = prompt(item_text)[1]["content"]
+        user_prompt_only = build_bfi2_prompt(item_text)[1]["content"]
 
         # Add item
         conversation.append(
@@ -70,7 +81,7 @@ def run_single_survey(items):
         )
 
         # Ask model
-        answer = call_model(conversation)
+        answer = ask_deepseek(conversation)
 
         # Store answer in memory
         conversation.append(
@@ -80,7 +91,7 @@ def run_single_survey(items):
         answers.append(answer)
 
         # Rate-limit safety
-        time.sleep(0.25)
+        time.sleep(0.1)
 
     return answers
 
@@ -88,7 +99,7 @@ def run_single_survey(items):
 
 # RUN MULTIPLE SURVEYS (RESET MEMORY EACH RUN)
 
-def run_many_surveys(csv_path, n_runs=100):
+def run_many_surveys(csv_path, n_runs=1000):
     df = pd.read_csv(csv_path)
     items = df["question"].tolist()
 
@@ -105,13 +116,16 @@ def run_many_surveys(csv_path, n_runs=100):
 
 # SAVE RESULTS
 
-def save_results(results, outfile="GPT_bfi2_results_en.json"):
+def save_results(results, outfile="deepseek_bfi2_results.json"):
     with open(outfile, "w") as f:
         json.dump(results, f, indent=2)
     print("Results saved to:", outfile)
 
 
+
+# MAIN
+
 if __name__ == "__main__":
-    results = run_many_surveys("BFI2_questions_GPT_en.csv", n_runs=100)
+    results = run_many_surveys("BFI2_questions.csv", n_runs=1000)
     save_results(results)
     print("All runs completed successfully.")

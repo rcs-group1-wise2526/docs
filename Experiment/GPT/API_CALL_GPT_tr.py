@@ -14,14 +14,14 @@ temperature = 1
 def prompt(item_text):
 
     system_prompt = (
-        "这是一份人格问卷。\n"
-        "对于每个陈述，请用 1 到 5 的单个数字作答，\n"
-        "其中 1 表示非常不同意，5 表示非常同意。\n"
-        "只用一个数字作答。不要解释。"
+        "Bu bir kişilik anketidir. \n"
+        "Her ifade için 1-5 arası tek bir rakam yazın:\n1 = Kesinlikle katılmıyorum\n2 = Katılmıyorum\n3 = Kararsızım\n4 = Katılıyorum\n5 = Kesinlikle katılıyorum \n"
+        "SADECE tek bir rakam yazın (1, 2, 3, 4 veya 5). \n" 
+        "Açıklama yapmayın."
     )
 
     user_prompt = (
-        f"我是一个{item_text}的人。"
+        f"Ben ... biriyim: {item_text}."
     )
 
     return [
@@ -105,13 +105,13 @@ def run_many_surveys(csv_path, n_runs=100):
 
 # SAVE RESULTS
 
-def save_results(results, outfile="GPT_bfi2_results_cn.json"):
+def save_results(results, outfile="GPT_bfi2_results_tr.json"):
     with open(outfile, "w") as f:
         json.dump(results, f, indent=2)
     print("Results saved to:", outfile)
 
 
 if __name__ == "__main__":
-    results = run_many_surveys("BFI2_questions_GPT_cn.csv", n_runs=100)
+    results = run_many_surveys("BFI2_questions_GPT_tr.csv", n_runs=100)
     save_results(results)
     print("All runs completed successfully.")
