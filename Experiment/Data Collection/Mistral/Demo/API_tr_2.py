@@ -1,0 +1,105 @@
+import json
+import pandas as pd
+import time
+import os
+from mistralai import Mistral
+
+API_KEY = "YOUR API KEY"
+client = Mistral(api_key=API_KEY)
+MODEL = "mistral-small-latest"
+
+prompts = {
+    "tr": {
+        "systemprompt": (
+            "Bu bir kişilik anketidir. Her ifade için 1-5 arasında tek bir rakam yazın.\n"
+            "1 Kesinlikle katılmıyorum\n"
+            "2 Katılmıyorum\n"
+            "3 Kararsızım\n"
+            "4 Katılıyorum\n"
+            "5 Kesinlikle katılıyorum\n"
+            "SADECE 1, 2, 3, 4 veya 5 rakamlarından birini yazın. Açıklama yapmayın."
+        ),
+        "userprompt": "fBen ... biriyim {itemtext}."
+    }
+}
+
+def create_bfi_prompt(item_text, language="tr"):
+    system_prompt = prompts[language]["systemprompt"]
+    user_prompt = prompts[language]["userprompt"].format(itemtext=item_text)
+    return [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_prompt},
+    ]
+
+def send_mistral_request(messages, temperature=1, max_retries=5):
+    for attempt in range(max_retries):
+        try:
+            response = client.chat.complete(
+                model=MODEL,
+                messages=messages,
+                temperature=temperature,
+                max_tokens=8,
+            )
+            return response.choices[0].message.content.strip()
+        except Exception as e:
+            print(f"WARN: API error, attempt {attempt + 1}/{max_retries}: {e}")
+            if attempt < max_retries - 1:
+                wait_time = 2 ** attempt
+                print(f"Waiting {wait_time} seconds before retry...")
+                time.sleep(wait_time)
+            else:
+                return "ERROR"
+
+def process_full_survey(items, language="tr"):
+    system_prompt_only = create_bfi_prompt("dummy", language)[0]["content"]
+    conversation = [{"role": "system", "content": system_prompt_only}]
+    answers = []
+
+    for item_text in items:
+        user_prompt_only = create_bfi_prompt(item_text, language)[1]["content"]
+        conversation.append({"role": "user", "content": user_prompt_only})
+        answer = send_mistral_request(conversation)
+        conversation.append({"role": "assistant", "content": answer})
+        answers.append(answer)
+        time.sleep(0.75)
+
+    return answers
+
+def generate_multiple_surveys(csv_path, num_surveys=100, language="tr"):
+    df = pd.read_csv(csv_path)
+    items = df["question"].tolist()
+    all_results = []
+
+    for survey_num in range(num_surveys):
+        print(f"Generating Survey {survey_num + 1}/{num_surveys} ({language.upper()})")
+        survey_answers = process_full_survey(items, language=language)
+        all_results.append(survey_answers)
+
+    return all_results
+
+def store_survey_data(results, output_file):
+    try:
+        output_dir = os.path.dirname(output_file)
+        print(f"Output directory: {output_dir}")
+        print(f"Full output path: {output_file}")
+        if output_dir:
+            os.makedirs(output_dir, exist_ok=True)
+        with open(output_file, "w", encoding="utf-8") as f:
+            json.dump(results, f, indent=2, ensure_ascii=False)
+        print(f"Results saved to {output_file}")
+        print(f"File size: {os.path.getsize(output_file)} bytes")
+    except Exception as e:
+        print(f"Error saving to {output_file}: {e}")
+        import traceback
+        traceback.print_exc()
+
+if __name__ == "__main__":
+    print("Mistral BFI-2 Generator (TURKISH)")
+    INPUT_CSV = "BFI2Questionnaire.csv"
+    OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
+    print(f"Working directory: {OUTPUT_DIR}")
+    output_file = os.path.join(OUTPUT_DIR, "mistral_bfi2_results_tr.json")
+    print(f"--- TR ---")
+    survey_results = generate_multiple_surveys(INPUT_CSV, num_surveys=100, language="tr")
+    store_survey_data(survey_results, output_file)
+    print("TR completed!")

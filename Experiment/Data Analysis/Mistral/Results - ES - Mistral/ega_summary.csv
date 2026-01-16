@@ -1,0 +1,4 @@
+"dataset","n_dimensions"
+"human_src_es",6
+"llm_src_es_Mistral",5
+"llm_tgt_en_Mistral",8
