@@ -1,0 +1,316 @@
+\documentclass[sigconf,anonymous]{acmart}
+
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    Bib\TeX}}}
+
+\copyrightyear{2026}
+\acmYear{2026}
+\acmConference[KDD '26]{August 09--13, 2026}{Jeju, Korea}
+
+\usepackage{siunitx}
+\usepackage{totpages}
+\usepackage{graphicx}
+\usepackage{multirow}
+
+\begin{document}
+
+\title{Psychological Simulacra: A Cross-Linguistic Assessment of LLM Psychometric Performance}
+
+\author{Example}
+\affiliation{%
+  \institution{Example}
+  \city{Example}
+  \country{Example}}
+\email{example@example.com}
+
+\begin{abstract}
+Large language models (LLMs) present a conceivably invaluable asset to the field of the social sciences and psychological study. The ability to reduce costs by simulating human response data could allow for greatly expanded scopes of study, not to mention creating reliable new methodologies for researchers to quickly and easily gather survey data. This being said, however, their ability to truly simulate human psychological constructs (as opposed to a mere emulation of surface-level qualities of human answering) remains questionable \cite{munkerFingerprintingLLMsSurvey2025a}. This study aims to assess a diverse selection of open and closed source models (including but not limited to Gemma 3, Qwen3, GPT-5.1, DeepSeek-V3.2, etc.) using two different model simulation methods and across multiple language domains on the Big Five Inventory-2 (BFI-2), a 60-item personality measure with balanced true- and reverse-keyed items, to explore just how different models operationalize commonly assessed psychological constructs under a variety of different circumstances. We hoped that through the use of our different simulation methods, Multi-Turn Decision Tracing (MTDT) which models responses as branching decisions, and through traditional model prompting techniques, we could evaluate model behavior, as it compares against human baselines, as it varies across languages, and as it correlates between models. To these ends, we observed pervasive response invariance, a problem previously described in literature on the topic \cite{Sühr2025}, as well as an overall inability to maintain a reliable, internally consistent, grasp on psychological constructs. Where we expected language might play an outsized role in affecting model handling of psychological modeling, the dominant factor came to be model origin/family, even over other important attributes such as model size. Overall, we are left with an impression of LLM capabilities that urges us to implore caution when exploring their potential use as human simulacra in the social sciences, lest one mistake superficial trait mimicry for psychometric structural fidelity.
+\end{abstract}
+
+\keywords{AI Psychometrics, Large Language Models, Big Five Inventory-2, Multi-Turn Decision Tracing, Multilingual Evaluation}
+
+\maketitle
+
+\section{Introduction}
+A paradigm change in artificial intelligence has been sparked by the quick development of large language models (LLMs), which have moved from task-specific tools to general-purpose assistants with complex text production and reasoning capabilities similar to those of humans \cite{ref5}. Researchers have started using these models as simulated responders in psychological and social science investigations as they become more and more integrated into the social realm \cite{ref1}.
+
+AI Psychometrics is a new area that uses standardized techniques to assess the latent psychological characteristics, such as personality, values, and beliefs, that are encoded in a model's parameters throughout its extensive training on human-generated corpora \cite{ref15}. Whether the psychometric characteristics found in human populations, specifically, the hierarchical structure of personality, can be recovered and maintained in artificial agents is at the heart of this inquiry \cite{ref17}.
+
+\section{Background}
+
+\subsection{Theoretical Foundations of the Big Five and the BFI-2}
+Extraversion, agreeableness, conscientiousness, negative emotionality (neuroticism), and open-mindedness are the five basic categories into which the Five-Factor Model (FFM), sometimes referred to as the Big Five, divides human personality, according to mainstream thought \cite{ref7}. These categories describe consistent thought, emotion, and behavior patterns that have shown strong predictive validity for a variety of life outcomes, including academic achievement, work performance, and subjective well-being \cite{ref7}.
+
+A major psychometric development of the original BFI, the Big Five Inventory-2 (BFI-2) was created to solve the bandwidth-fidelity conundrum \cite{ref7}. By summarizing a large range of behaviors, broad domain scales offer great bandwidth, but they might not have the accuracy required to forecast particular results \cite{ref9}. This is addressed by the BFI-2, which uses a hierarchical structure of 60 items to evaluate the five broad areas through 15 nested aspects (three per domain), enabling both thorough coverage and fine-grained detail \cite{ref7}. Importantly, an equal amount of true-keyed and false-keyed (reverse-coded) elements make up the BFI-2 \cite{ref8}. The tendency to agree with statements regardless of their content, known as acquiescent response bias, has historically skewed the factorial validity of imbalanced personality surveys in both human and machine contexts. This design is crucial for preventing this \cite{ref7}.
+
+\subsection{Cross-Cultural and Cross-Linguistic Personality Measurement}
+Measurement is made more difficult by linguistic framing. Language serves as a prime for particular cultural lenses, and research on situated cognition shows that culture is a dynamic process rather than a static property \cite{ref12}. An individual's salient self-concept, value priorities, and even cognitive styles, such as the propensity to focus on items independently (analytic) vs in connection to their context (holistic), can be altered by prioritizing individualism over collectivism \cite{ref6}. As a result, personality profiles may change between language versions of the same test, maybe due to cultural ``programming'' within a community or systematic translation biases \cite{ref19}.
+
+\subsection{LLMs as Simulated Respondents and Machine Psychology}
+A novel avenue for large-scale testing of social science ideas is provided by the employment of LLMs as stand-ins for human subjects \cite{ref13}. This ``machine psychology'' views models as subjects whose reactions are influenced by the ``multitude of characters'' found in their training data \cite{ref19}. Research has demonstrated that when LLMs are given various identities based on demographic priors, they can replicate cross-cultural variances and resemble particular personality characteristics \cite{ref19}.
+
+But it's important to keep in mind that LLMs lack true mental states, consciousness, and the capacity for introspection \cite{ref16}. Instead of stable psychological features, their ``personality'' is better viewed as a collection of learnt linguistic associations and statistical regularities \cite{ref17}. Nevertheless, if a model's responses exhibit high algorithmic accuracy, they might still offer insightful information about the biases and cultural knowledge included in the digital artifacts of human culture that were utilized for training \cite{ref19}.
+
+\subsection{Cultural, Linguistic, and WEIRD Biases in LLM Behavior}
+The propensity of LLMs to reflect and magnify the prejudices of the WEIRD (Western, Educated, Industrialized, Rich, and Democratic) societies that predominate their pre-training data is a recurring issue in their deployment \cite{ref3}. The majority of cutting-edge models show a latent bias in favor of liberal norms, individualistic viewpoints, self-expression, and Western cultural values \cite{ref6}. Because a large amount of their non-English knowledge may come from machine-translated content that lacks local cultural subtlety, this Anglocentric bias endures even when models are prompted in other languages \cite{ref2}.
+
+Additionally, LLMs frequently exhibit homogeneity bias, depicting underprivileged or socially subordinate groups as having a smaller breadth of human experiences than dominant groups \cite{ref4}. When models perform more accurately for dominant demographics while reinforcing prejudices, such as linking particular ethnic names to lower-status employment or negative attitudes, this can result in representational harm \cite{ref5}. Because models trained on mixed-language data may no longer be able to localize to a particular culture's distinctive social practices, the ``curse of multilinguality'' may likewise weaken cultural distinctiveness \cite{ref2}.
+
+\subsection{Methodological Concepts: Validity and Invariance}
+Construct validity and measurement invariance must be thoroughly examined in order to validate the application of human psychological tools to LLMs \cite{ref18}. Construct validity, which includes convergent, discriminant, and predictive validity, guarantees that an instrument actually measures the latent variable it purports to measure \cite{ref15}. In actual situations, for instance, a model's self-reported personality score should align with its decision-making behavior \cite{ref14}.
+
+Comparing scores across various groups or populations requires measurement invariance (MI) \cite{ref7}. Usually, three hierarchical stages are used to verify it:
+\begin{enumerate}
+    \item Configural Invariance: All groups have the same factor structure (number of factors and loading pattern) \cite{ref20, ref10}.
+    \item Metric Invariance: The unit of measurement is equivalent since the factor loadings are equal \cite{ref20}.
+    \item Scalar Invariance: In order to compare latent means, the item intercepts must be equivalent \cite{ref20}.
+\end{enumerate}
+
+Significant measurement invariance failures have been found in recent psychometric studies of LLMs \cite{ref18}. Even though some models can recover the five-factor structure through exploratory analysis, they frequently fail more stringent confirmatory tests, exhibiting high agree bias and inconsistent true-keyed and false-keyed items \cite{ref18}. This implies that rather than reflecting a coherent latent personality as defined in human psychology, LLM replies might be samplers of learnt linguistic patterns \cite{ref18, ref19}.
+
+\subsection{Limitations and Gaps in Existing Work}
+There are still a number of restrictions and unanswered questions despite the increase in research. First, multilingual, instrument-based evaluations are very lacking \cite{ref1}. The majority of research concentrate on English, and those that do investigate other languages frequently use translations or ad hoc cues that have not been formally validated psychometrically in the target cultural context \cite{ref5}. Second, there is a mismatch between operational behavior and self-reported qualities; models may exhibit high levels of ``extraversion'' on a scale but not in open-ended narratives \cite{ref14}. Third, proprietary models' ``black box'' characteristics make it difficult to look into the internal workings or particular training sources that are in charge of these noted psychological representations \cite{ref3}. Lastly, the impact of intersectional demographics and cultural sensitivity across a wide range of semantic domains, such kinship or social etiquette, is rarely taken into consideration in current research \cite{ref1}.
+
+\subsection{The Necessity of a Multilingual BFI-2 Study}
+To overcome the present shortcomings of AI psychometrics and cultural alignment research, a comprehensive investigation using the BFI-2 in English, Turkish, and Chinese is theoretically and methodologically required. In terms of methodology, it makes it possible to test measurement invariance across three linguistically and culturally distinct populations: a dynamic, non-WEIRD hybrid culture (Turkish), a prototypical collectivistic East Asian culture (Chinese), and a prototypical individualistic Western culture (English/US) that offers a crucial test of generalizability \cite{ref7}. Theoretically, such a study can go beyond surface-level bias measurements to ascertain if the internal architecture of personality concepts in LLMs is genuinely global or just an artifact of Anglocentric training data by using a hierarchically constructed instrument with balanced keying \cite{ref7}. This strategy is essential to preventing the cycle of cultural homogenization and ensuring that the worldwide implementation of LLMs respects the diversity of human values \cite{ref3}.
+
+\section{Methods}
+\subsection{New Method}
+\subsubsection{Instruments and Languages} We evaluate the preservation of psychometric structural patterns using the Big Five Inventory-2 \cite{sotoNextBigFive2017} in three languages: English, Chinese, and Turkish. The English item set and response format were sourced from the materials described in \cite{zhangImprovingMeasurementBig2025}. For the non-English versions, we adopted the validated Chinese translation by \cite{zhangBigFiveInventory2022} and the Turkish validation by \cite{cemalcilarTestingBFI2NonWEIRD2021}. Each version contains 60 items with a 5 point response scale.
+
+\subsubsection{Models} We evaluated a suite of open weight LLMs across four model families and varying sizes: Gemma 3 (4B, 12B), Llama 3.2 (1B, 3B), Qwen 3 (4B, 8B, 14B), and Ministral 3 (3B, 8B, 14B). Each model was evaluated across the three language versions of the BFI-2 described above.
+
+All models were executed using vLLM as the inference backend. We used deterministic, single step constrained decoding: we generated exactly one token per item (max\_tokens=1) with (temperature=0). We constrained the output space to the valid Likert response tokens via a structured choice set.
+
+\subsubsection{Prompting} For each item, we follow the Multi-Turn Decision Tracing (MTDT) framework proposed by \cite{mtdt} to simulate the sequential nature of how humans take tests. The items and response scales were adopted without modification from the aforementioned validated English, Chinese, and Turkish versions of the BFI-2. For the system instructions, we employ a minimal prompting strategy to preserve the model’s default generation patterns as closely as possible, the system instruction prompts were translated by the author to the greatest extent possible to ensure cross linguistic consistency in the prompting framework.
+
+Specifically, we employ a history aware conversation format where subsequent items are appended to the previous dialogue, thereby accounting for the influence of conversational context.
+
+\subsubsection{Evaluation Framework} We adopt the Multi-Turn Decision Tracing (MTDT) framework proposed by \cite{mtdt} to evaluate whether a model preserves psychometric structural patterns across languages. Unless stated otherwise, we follow the original MTDT formulation and construction procedure in \cite{mtdt}.
+
+\subsubsection{Multi-Turn Decision Tracing} Unlike standard psychometric evaluations that treat questionnaire items as independent, MTDT models a multi-item instrument as a sequential, branching decision process. By retaining multiple high probability response branches at each turn, MTDT propagates distinct history states forward, making the dependence on past model decisions explicit. This procedure constructs a response pattern network dependent on evolving conversation history.
+
+Operationally, we construct response pattern network via the following iterative branching procedure:
+\begin{enumerate}
+    \item Create the initial history state containing the system instructions followed by the first item $q_1$, and its associated response scale.
+    \item For each active history state $h_{<i}$ at item $q_i$, run LLM and record token log probabilities for the constrained response set under a one token completion.
+    \item For each item $q_i$, retain candidate tokens satisfying $P(r|q_i,h_{<i}) > \tau$, keeping at most the top-$k$ tokens.
+    \item Append each candidate token to each active history, producing successor histories and advancing to item $q_{i+1}$.
+    \item Repeat Steps 2–4 for $i= 1, \dots, n$. We log, per item and history, the tokens, log probability, and probability.
+\end{enumerate}
+
+MTDT represents the decision space as a directed graph $G=(V, E)$ that encodes alternative response pathways. Following \cite{mtdt}, the vertices $V$ and edges $E$ are defined as follows:
+\begin{equation}
+V = \{(q_i,r_j) : i \in [1..n], j \in \text{top-}k(q_i)\}
+\end{equation}
+\begin{equation}
+E = \{((q_i,r_j), (q_{i+1},r_k)) : P(r_k|q_{i+1},h_{\leq i}) > \tau\}
+\end{equation}
+
+We adapt MTDT to the 60-item BFI-2 instrument described above. While \cite{mtdt} adopts a default exploration threshold of $\tau= 10^{-4}$, we employ a more conservative pruning strategy to control combinatorial growth in a 60-turn dialogue. Specifically, we set $\tau= 10^{-3}$ and limit the branching factor to $k= 3$ (top-$k$). This configuration focuses the resulting response pattern network on the most robust decision pathways while remaining computationally tractable for our multilingual setting.
+
+\subsubsection{Cross Language Similarity Assessment} To quantify the preservation of psychometric structural patterns across languages, we follow the evaluation procedure established by \cite{mtdt}. For each question $q_i$ and response option $r_j$, we aggregate probabilities across all histories that reach $q_i r_j$. The aggregated probability for a response option $r_j$ is defined as:
+\begin{equation}
+\bar{P}(r_j| q_i) = \frac{1}{|H_i|} \sum_{h \in H_i} P(r_j| q_i,h)
+\end{equation}
+From these values, we construct a response profile matrix $M \in R^{5 \times 60}$, where rows represent the Likert scale options and columns represent the 60 BFI-2 items. Each entry $M[r_j,q_i]$ corresponds to the aggregated probability $\bar{P}(r_j| q_i)$ \cite{mtdt}.
+
+To compare distinct experimental configurations, encompassing variations across languages and model architectures, we adopt the evaluation metric utilized within the MTDT framework \cite{mtdt}. This approach quantifies similarity as the complement of the directed Hausdorff distance.
+
+\subsection{Traditional Method}
+
+\subsubsection{Evaluation Framework} To evaluate the psychometric structure and behavior of Large Language Models (LLMs) across both respondent type conditions (human vs. LLM) and linguistic contexts, we adopt a two dimensional methodology. This framework is designed to determine if an LLM (i) reproduces human typical psychometric structure and behavior in a specified language ($H_{src}, L_{src}$) and (ii) maintains psychometric structure and behavior consistency across languages ($L_{src}, L_{tgt}$). Following recent advancements in LLM psychometrics and alignment evaluation \cite{BiasandFairness2024, munkerFingerprintingLLMsSurvey2025a}, we conduct our evaluation through two primary analytical dimensions: structural similarity and behavioral alignment.
+
+\subsubsection{Models} We evaluated a selection of three models using our traditional method pipeline across four different languages, English, Spanish, Turkish, and Chinese. These models were GPT 5.1 from OpenAI, DeepSeek-V3.2, and Mistral Small 3.2 (2506).
+
+\subsubsection{Structural Similarity} We adopt three complementary structural analyses as proposed by \cite{munkerFingerprintingLLMsSurvey2025a} to characterize the model’s internal representation of psychological constructs. First, we construct factor correlation based psychometric ``fingerprints'' from item level correlation patterns, which we subsequently use to quantify structural similarity across conditions. Second, to test whether the LLM recovers the intended five factor latent structure of the BFI-2 across conditions, we apply Exploratory Graph Analysis (EGA) to recover item communities and compare the number of recovered communities against the theoretical number of BFI-2 factors. Third, as an additional psychometric consistency check, we compute Cronbach’s Alpha for each BFI-2 subscale to assess internal consistency within factors. Together, these analyses assess whether the latent psychological structure generated by LLM responses align with human typical psychological structure and whether they remain stable across linguistic contexts.
+
+\paragraph{Fingerprinting} Following \cite{munkerFingerprintingLLMsSurvey2025a}, we define a model’s psychometric ``fingerprint'' as the correlation structure among responses of questionnaire items, operationalized as a correlation matrix capturing pairwise relationships across all items in the collected responses. This correlation pattern is treated as a distinctive signature of psychological construct.
+
+For each dataset D, defined by the respondent type (LLM vs. human) and the language of the used questionnaire (source vs. target), we consider $D^{LLM}_{src}$ and $D^{LLM}_{tgt}$ obtained by presenting the source and target language instruments to the LLM, and $D^{Human}_{src}$ obtained by presenting the source language instrument to human respondents. Given each dataset D, we then compute a $Q \times Q$ Pearson correlation matrix $C_x$, where $Q= 60$ for the BFI-2. We extract the off-diagonal upper triangular elements to form a vectorized fingerprint $\hat{C}_x$:
+\begin{equation}
+\hat{C}_x = [c_{1,2},c_{1,3}, \dots, c_{Q-1,Q}]^\top
+\end{equation}
+We then adopt the similarity comparison method used in \cite{munkerFingerprintingLLMsSurvey2025a}, quantifying the similarity between two vectorized fingerprints $\hat{C}_{x1}$ and $\hat{C}_{x2}$ using cosine similarity \cite{lahitaniCosineSimilarityDetermine2016}.
+
+\paragraph{Exploratory Graph Analysis} To test whether the LLM recovers the intended five factor structure of the BFI-2 across conditions, we apply Exploratory Graph Analysis (EGA) to correlation matrix. Specifically, we follow the EGA procedure adopted by \cite{munkerFingerprintingLLMsSurvey2025a}, which builds on \cite{golinoExploratoryGraphAnalysis2017}. The procedure involves estimating a network via graphical LASSO algorithm with EBIC model selection \cite{friedmanSparseInverseCovariance2008} and then use Walktrap community detection algorithm \cite{ponsComputingCommunitiesLarge2005} to identify item communities, which are interpreted as recovered latent dimensions. We apply this procedure to the BFI-2 ($Q= 60$ items; five factors) and evaluate dimensionality recovery by comparing the number of detected communities to the theoretical five factor structure.
+
+\paragraph{Subscale Consistency} Following the methodology proposed by \cite{munkerFingerprintingLLMsSurvey2025a}, we compute Cronbach’s alpha for each BFI-2 subscale as a complementary psychometric consistency assessment. This established metric evaluates the internal consistency and reliability of responses within a given subscale.
+
+\subsubsection{Behavioral Alignment} The second dimension assesses behavioral alignment. Whereas structural similarity targets the model’s internal psychometric structure, behavioral alignment evaluates surface level response behavior. Building on the methodology proposed by \cite{BiasandFairness2024}, we assess the behavioral alignment by computing the distance between response distributions. Specifically, we calculate the 1-Wasserstein distance between response distributions across conditions, quantifying how closely LLM behaviors mirror human baselines or preserve consistency across translations.
+
+\paragraph{1-Wasserstein Distance} For each item $q$, we represent the Likert responses in dataset $D$ as an ordinal distribution $p_D(r| q)$ over response categories $r \in \{1, \dots, K\}$, where $p_D(r= i| q)$ denotes the probability of selecting category $i$ for item $q$ in $D$. Following \cite{BiasandFairness2024}, we use the 1-Wasserstein distance ($W_1$) to quantify the distributional distance between item level response distributions from datasets $D_1$ and $D_2$. This metric is appropriate for Likert data because it respects the ordinal structure of the scale by comparing cumulative probability mass along ordered categories. For an item $q$, the $W_1$ distance is computed as:
+\begin{equation}
+W_1(D_1, D_2;q) = \sum_{t=1}^{K-1} \left| \sum_{i=1}^{t} p_{D_1}(r= i| q) - \sum_{i=1}^{t} p_{D_2}(r= i| q) \right|
+\end{equation}
+In our setting, the BFI-2 uses $K= 5$ response categories.
+
+\paragraph{Alignment Scoring} We transform the 1-Wasserstein distance into a normalized alignment score $A(q) \in [0, 1]$, where 1 represents perfect distributional alignment:
+\begin{equation}
+A(q) = 1 - \frac{W_1(D_1, D_2;q)}{K-1}
+\end{equation}
+where $K= 5$.
+
+\paragraph{Aggregation} We aggregate item level alignment scores $A(q)$ to obtain summary measures at two levels. Global alignment is defined as the mean alignment scores across all $Q$ questionnaire items ($Q= 60$ for BFI-2):
+\begin{equation}
+A_{\text{global}} = \frac{1}{Q} \sum_{q=1}^{Q} A(q)
+\end{equation}
+In addition, we report subscale level alignment by averaging alignment scores within each BFI-2 subscale. Let $Q_s$ denote the set of items assigned to subscale $s$, then:
+\begin{equation}
+A_s = \frac{1}{Q_s} \sum_{q=1}^{Q_s} A(q)
+\end{equation}
+
+\section{Experiments}
+\subsection{New Method}
+From our MTDT method testing across four model families, ten total model variations (at various sizes), and across three languages, we acquired over 430 pairwise similarity comparisons between the models to assess the cross-language robustness of the varying model’s psychometric patterns. Further, we produced a sankey diagram for each model to provide visual clarity to its decision-making path and quickly observe overarching patterns. To these ends, our primary observation was the lack of a significant impact from language choice or model size on model similarity scoring and or sankey behavior. Indeed, regardless of language, the primary factor that appeared to most closely dictate model behavior outcome was model family, though this was also to a relative degree. Qwen models revealed a fairly high similarity scoring with one another across all languages and models sizes, as did the Ministral models, somewhat.
+
+However, the results from the Qwen models’ similarity scoring take on a new character when viewed within the context of their sankey diagrams. In this domain, almost all the Qwen models produced what we deem to be invariant results, that is to say, the models overwhelmingly selected the same answer path across every question, leading to very unchanging results.
+
+Regardless of the answer invariance concern with most of the Qwen models (and some of the Llama models), a larger problem also stands out amidst even many of the ostensibly valid results wherein model output simply does not effectively operationalize BFI-2 psychometric constructs. In order to show alignment with BFI-2 constructs such as ``Extraversion,'' or ``Agreeableness,'' it is not enough that a model consistently (but not invaryingly) answers with values between 3 - 5 (indicating a range of neutral to strong agreement) because of the BFI-2’s various reverse-coded statements. High positive alignment with an attribute such as ``Extraversion,'' is not simply a matter of indicating strong agreement with statements like ``I am someone who is outgoing, sociable,'' but also one of indicating strong disagreement with reverse metric statements like ``I am someone who rarely feels excited or eager.'' What we find instead is that many models selected paths that demonstrated alignment with metrics in traditional questions, but did not produce paths that accounted for reverse statements, producing an overall inconsistency that undermines the validity of their modeling of actual psychometric constructs.
+
+Of the models that remain, the larger Ministral models (8B and 14B) showed the most consistency overall at demonstrating robust psychometric constructs, with some minor differences between languages, namely a more consistent performance in English and Chinese than Turkish.
+
+\subsection{Traditional Method}
+Using our traditional LLM querying pipeline, we prompted across three models and four languages over a hundred sample surveys and acquired a plentitude of various alignment parameters comparing model performance across BFI-2 psychometric domains and between models and baseline human BFI-2 data acquired for each language. Our results, however, also revealed a familiar problem that presented us with the difficult reality of being unable to utilize all evaluation metrics we had anticipated. Like with some of the models tested using the new (MTDT) method, we collected data that was by and large, highly invariant. Accordingly, we were unable to produce effective model fingerprints or EGA diagrams (except for Mistral), though we were able to assess the behavioral alignment of our tested models, both between model outputs in different languages and against human baselines. We further collected cronbach's alpha data as a measure of internal consistency for GPT and Mistral.
+
+\subsubsection{LLMs and Human Alignment}
+Though we were not able to recreate the same fingerprinting technique used by \cite{munkerFingerprintingLLMsSurvey2025a} due to reasons of data invariancy, we were able to still observe a similar conclusion based on our analysis of model alignment against our human benchmark data across our selection of languages. Therein, no model gave a particularly strong alignment with any specific BFI-2 domain (Agreeableness, Conscientiousness, etc.) across all languages, nor did any model show especially strong alignment with any of the human answer sets in any language, though some were closer than others. These observations appear consistent with \cite{munkerFingerprintingLLMsSurvey2025a} on the basis that while these models simulate a human-like set of responses, their simulation cannot be said to be a completely accurate stand-in for true human-generated data.
+
+\subsubsection{Alignment Across Models}
+Model alignment results between models (i.e. the alignment of results between GPT and Mistral) remained remarkably consistent across all four languages. In every case, the models with the strongest alignment were GPT 5.1 and DeepSeek V3.2, with little to remark on in the way of relationships between the other models.
+
+\subsubsection{Alignment Across Languages}
+The most dynamic results we observed came in the form of our assessment of model alignment within the same model and across different languages. In this space, we found an overall great deal of item alignment across all BFI-2 domains, but a few key patterns came to the forefront. Namely, every model appeared to have a different grouping of language pairs that were more aligned with one another than others. In the case of GPT, generally, the most aligned pairings were English and Turkish and Spanish and Turkish. For DeepSeek, English and Chinese were a particularly divergent pairing while the others were fairly aligned. Finally, for Mistral, English and Chinese were by far the most aligned of any language pairing in the overall analysis, followed by a fairly aligned Spanish and Turkish result.
+
+\subsubsection{Cronbach’s Alpha}
+From our cronbach’s alpha analysis, GPT demonstrates fairly strong internal consistency metrics across all languages, with some degree of fluctuation in Spanish (particularly in the Negative Emotionality domain) and in Turkish generally. Mistral, by contrast, exhibits a highly irregular set of cronbach’s alpha metrics across all languages, with its strongest values representing domains in Spanish. Unfortunately, due to the highly invariant nature of the results from DeepSeek in particular, we were unable to conduct cronbach’s alpha testing on our data from DeepSeek.
+
+\section{Discussion}
+Our experiments expose some very important realities concerning the abilities of LLMs to participate in testing for psychometric constructs as simulacra for human populations. Our first conclusion to be drawn concerning model outputs is the primacy of model choice/family origin over prompted language or, at least insofar as the constructs of the BFI-2 are concerned, which domain was analyzed. Put simply, the primary indicator of end model behavior, whether results would be psychometrically consistent, both through the new and traditional method pipelines, was the model being tested. This is not to say that the latter attributes bore no effect on the outcomes we observed, however. Language choice did appear to present an effect on model outcomes in a variety of situations. For example, in the assessment of model alignment across languages, the pairings that appeared to be most aligned for each model seemed to be between the languages most closely related or those that might share similar tokenization characteristics.
+
+In conclusion, while large language models are powerful tools, their use in psychometrics requires careful validation. The observed invariance and dependency on model family rather than language suggest that what we are measuring may not be a deep psychological construct but rather a surface-level artifact of training. Future work should focus on developing more robust prompting techniques and evaluation metrics that can better distinguish between genuine psychometric alignment and mere statistical mimicry.
+
+\begin{thebibliography}{33}
+
+\bibitem{ref1}
+Esiobu, D., Tan, X., Hosseini, S., Ung, M., Zhang, Y., Fernandes, J., Dwivedi-Yu, J., Presani, E., Williams, A., \& Smith, E. M. (2023). ROBBIE: Robust bias evaluation of large generative language models. \textit{Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing}, 3764–3814. Association for Computational Linguistics.
+
+\bibitem{ref2}
+Naous, T., Ryan, M. J., Ritter, A., \& Xu, W. (2024). Having beer after prayer? Measuring cultural bias in large language models. \textit{Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)}, 16366–16393. Association for Computational Linguistics.
+
+\bibitem{ref3}
+AlKhamissi, B., ElNokrashy, M., AlKhamissi, M., \& Diab, M. (2024). Investigating cultural alignment of large language models. arXiv. https://arxiv.org/abs/2402.13231
+
+\bibitem{ref4}
+Lee, M. H. J., Montgomery, J. M., \& Lai, C. K. (2024). Large language models portray socially subordinate groups as more homogeneous, consistent with a bias observed in humans. \textit{Proceedings of the 2024 ACM Conference on Fairness, Accountability, and Transparency}, 20 pages. ACM. https://doi.org/10.1145/3630106.3658975
+
+\bibitem{ref5}
+Gallegos, I. O., Rossi, R. A., Barrow, J., Tanjim, M. M., Kim, S., Dernoncourt, F., Yu, T., Zhang, R., \& Ahmed, N. K. (2024). Bias and fairness in large language models: A survey. \textit{Computational Linguistics}, 50(3), 1097–1147. https://doi.org/10.1162/coli\_a\_00524
+
+\bibitem{ref6}
+Li, C., Chen, M., Wang, J., Sitaram, S., \& Xie, X. (2024). CultureLLM: Incorporating cultural differences into large language models. \textit{Proceedings of the 38th Conference on Neural Information Processing Systems (NeurIPS 2024)}.
+
+\bibitem{ref7}
+Choi, J., Kim, N., Zhang, B., Park, S. W., Cho, S., Sohn, Y. W., Soto, C. J., \& John, O. P. (2025). The Big Five Inventory–2 in Korea: Validation and cross-cultural comparisons with the U.S. and Chinese versions. \textit{Assessment}. Advance online publication. https://doi.org/10.1177/10731911251357466
+
+\bibitem{ref8}
+Denissen, J. J. A., Geenen, R., Soto, C. J., John, O. P., \& van Aken, M. A. G. (2020). The Big Five Inventory–2: Replication of psychometric properties in a Dutch adaptation and first evidence for the discriminant predictive validity of the facet scales. \textit{Journal of Personality Assessment}, 102(3), 309–324. https://doi.org/10.1080/00223891.2018.1539004
+
+\bibitem{ref9}
+Burro, R., Bianchi, I., \& Raccanello, D. (2025). Improving the Big Five Inventory-2 in an Italian context using Rasch analysis (BFI-2-R). \textit{Current Psychology}, 44, 5870–5883. https://doi.org/10.1007/s12144-025-07584-7
+
+\bibitem{ref10}
+Smederevac, S., Mitrović, D., Sadiković, S., Dinić, B. M., John, O. P., \& Soto, C. J. (2024). The Big Five Inventory–2 (BFI-2): Psychometric properties and validation in the Serbian language (Preprint). SSRN. https://ssrn.com/abstract=4711058
+
+\bibitem{ref11}
+Schmitt, D. P., Allik, J., McCrae, R. R., \& Benet-Martínez, V. (2007). The geographic distribution of Big Five personality traits: Patterns and profiles of human self-description across 56 nations. \textit{Journal of Cross-Cultural Psychology}, 38(2), 173–212. https://doi.org/10.1177/0022022106297299
+
+\bibitem{ref12}
+Oyserman, D., \& Lee, S. W. S. (2008). Does culture influence what and how we think? Effects of priming individualism and collectivism. \textit{Psychological Bulletin}, 134(2), 311–342. https://doi.org/10.1037/0033-2909.134.2.311
+
+\bibitem{ref13}
+Park, J.-S., O’Brien, J. C., Cai, C. J., Morris, M. R., Liang, P., \& Bernstein, M. S. (2023). Generative agents: Interactive simulacra of human behavior. \textit{Proceedings of the 36th Annual ACM Symposium on User Interface Software and Technology (UIST ’23)}, 22 pages. ACM. https://doi.org/10.1145/3586183.3606763
+
+\bibitem{ref14}
+Huang, X., Li, Y., Yu, W., Zhong, W., Feng, Z., Wang, H., Chen, Q., Peng, W., Feng, X., Qin, B., \& Liu, T. (2024). Evaluating large language models with psychometrics. arXiv. https://arxiv.org/abs/2402.XXXX
+
+\bibitem{ref15}
+Li, Y., Lin, X., Sha, Z., Jin, Z., \& Li, X. (2025). AI psychometrics: Evaluating the psychological reasoning of large language models with psychometric validities. \textit{Proceedings of the 58th Hawaii International Conference on System Sciences (HICSS 2025)}, 5194–5203. https://hdl.handle.net/10125/109471
+
+\bibitem{ref16}
+Lee, S., Lim, S., Han, S., Oh, G., Chae, H., Chung, J., Kim, M., Kwak, B.-W., Lee, Y., Lee, D., Yeo, J., \& Yu, Y. (2025). Do LLMs have distinct and consistent personality? TRAIT: Personality testset designed for LLMs with psychometrics. \textit{Findings of the Association for Computational Linguistics: NAACL 2025}, 8412–8452. Association for Computational Linguistics.
+
+\bibitem{ref17}
+Mercer, S., Martin, D. P., \& Swatton, P. (2025). Applying psychometrics to large language model simulated populations: Recreating the HEXACO personality inventory experiment with generative agents. arXiv. https://arxiv.org/abs/2508.00742
+
+\bibitem{ref18}
+Sühr, T., Dorner, F. E., Samadi, S., \& Kelava, A. (2025). Challenging the validity of personality tests for large language models. \textit{Proceedings of the 2025 Equity and Access in Algorithms, Mechanisms, and Optimization (EAAMO ’25)}, 8 pages. ACM. https://doi.org/10.1145/3757887.3763016
+
+\bibitem{ref19}
+Pellert, M., Lechner, C. M., Wagner, C., Rammstedt, B., \& Strohmaier, M. (2022). Large language models open up new opportunities and challenges for psychometric assessment of artificial intelligence. arXiv. https://arxiv.org/abs/2210.XXXX
+
+\bibitem{ref20}
+Talik, W., Talik, E. B., \& Grassini, S. (2025). Measurement invariance of the artificial intelligence attitude scale (AIAS-4): Cross-cultural studies in Poland, the USA, and the UK. \textit{Current Psychology}, 44, 15758–15766. https://doi.org/10.1007/s12144-025-08348-z
+
+\bibitem{ROBBIE}
+Esiobu, D., Tan, X., Hosseini, S., Ung, M., Zhang, Y., Fernandes, J., Dwivedi-Yu, J., Presani, E., Williams, A., \& Smith, E. M. (2023). ROBBIE: Robust bias evaluation of large generative language models. (2023).
+
+\bibitem{cemalcilarTestingBFI2NonWEIRD2021}
+Zeynep Cemalcilar, Lemi Baruh, Murat Kezer, Christopher J. Soto, Nebi Sumer, and Oliver P. John. (2021). Testing the BFI-2 in a non-WEIRD community sample. \textit{Personality and Individual Differences} 182 (Nov. 2021), 111087. doi:10.1016/j.paid.2021.111087
+
+\bibitem{elleRewardModelPerspectives2025b}
+Elle. (2025). Reward Model Perspectives: Whose Opinions Do Reward Models Reward?. In \textit{Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing}. Association for Computational Linguistics, Suzhou, China, 14931–14955. doi:10.18653/v1/2025.emnlp-main.754
+
+\bibitem{friedmanSparseInverseCovariance2008}
+Jerome Friedman, Trevor Hastie, and Robert Tibshirani. (2008). Sparse inverse covariance estimation with the graphical lasso. \textit{Biostatistics} 9, 3 (July 2008), 432–441. doi:10.1093/biostatistics/kxm045
+
+\bibitem{BiasandFairness2024}
+Rossi R. A., Barrow J., Tanjim M. M., Kim S., Dernoncourt F., Yu T., Zhang R., Ahmed N. K, Gallegos, I. O. (2024). Bias and fairness in large language models: A survey. \textit{Personality and Individual Differences} 50 (Sept. 2024), 1097–1179. doi:10.1016/j.paid.2021.111087
+
+\bibitem{golinoExploratoryGraphAnalysis2017}
+Hudson F. Golino and Sacha Epskamp. (2017). Exploratory graph analysis: A new approach for estimating the number of dimensions in psychological research. \textit{PLOS ONE} 12, 6 (June 2017), e0174035. doi:10.1371/journal.pone.0174035
+
+\bibitem{lahitaniCosineSimilarityDetermine2016}
+Alfirna Rizqi Lahitani, Adhistya Erna Permanasari, and Noor Akhmad Setiawan. (2016). Cosine similarity to determine similarity measure: Study case in online essay assessment. In \textit{2016 4th International Conference on Cyber and IT Service Management}. IEEE, Bandung, Indonesia, 1–6. doi:10.1109/CITSM.2016.7577578
+
+\bibitem{munkerFingerprintingLLMsSurvey2025a}
+Simon Münker. (2025). Fingerprinting LLMs through Survey Item Factor Correlation: A Case Study on Humor Style Questionnaire. In \textit{Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing}. Association for Computational Linguistics, Suzhou, China, 245–258. doi:10.18653/v1/2025.emnlp-main.13
+
+\bibitem{mtdt}
+Simon Münker. (2026). Multi-Turn Decision Tracing (MTDT). (2026).
+
+\bibitem{ponsComputingCommunitiesLarge2005}
+Pascal Pons and Matthieu Latapy. (2005). Computing communities in large networks using random walks (long version). doi:10.48550/arXiv.physics/0512106 arXiv:physics/0512106.
+
+\bibitem{sotoNextBigFive2017}
+Christopher J. Soto and Oliver P. John. (2017). The next Big Five Inventory (BFI-2): Developing and assessing a hierarchical model with 15 facets to enhance bandwidth, fidelity, and predictive power. \textit{Journal of Personality and Social Psychology} 113, 1 (July 2017), 117–143. doi:10.1037/pspp0000096
+
+\bibitem{zhangBigFiveInventory2022}
+Bo Zhang, Yi Ming Li, Jian Li, Jing Luo, Yonghao Ye, Lu Yin, Zhuosheng Chen, Christopher J. Soto, and Oliver P. John. (2022). The Big Five Inventory–2 in China: A Comprehensive Psychometric Evaluation in Four Diverse Samples. \textit{Assessment} 29, 6 (Sept. 2022), 1262–1284. doi:10.1177/10731911211008245
+
+\bibitem{zhangImprovingMeasurementBig2025}
+Xijuan Zhang, Muhua Huang, Jessie Sun, and Victoria Savalei. (2025). Improving the Measurement of the Big Five via Alternative Formats for the BFI-2. \textit{Journal of Personality Assessment} (Aug. 2025), 1–22. doi:10.1080/00223891.2025.2531187
+
+\end{thebibliography}
+
+\clearpage
+\appendix
+\section{Exploratory Graph Analysis}
+One technique we attempted to use to explore the dynamics of our chosen (traditionally prompted) LLMs' psychometric properties was exploratory graph analysis. However, in the majority of cases, our model simulations suffered from too high a degree of output invariance to generate effective EGA diagrams for assessment. Nevertheless, the few outputs we were able to construct (from Mistral Small 3.2) do still help illustrate the observable differences between how psychological constructs are represented in human data and how they are in machine generated data. The grouping of psychological attributes into fairly stable and identifiable categories in the human data is particularly evident in the given comparison as opposed to the interspersed and relatively undefined attribute groupings in the Mistral generated material.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Mistral_EGA_HUM_EN.png}
+    \caption{An Exploratory Graph Analysis (EGA) diagram prepared from Human respondent data in English}
+    \label{fig:HumanEGA}
+\end{figure}
+
+\begin{figure}[hb]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Mistral_EGA_LLM_EN.png}
+    \caption{An Exploratory Graph Analysis (EGA) diagram prepared from Mistral generated data in English}
+    \label{fig:MistralEGA}
+\end{figure}
+
+\end{document}
