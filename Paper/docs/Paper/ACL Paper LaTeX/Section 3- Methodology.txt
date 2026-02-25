@@ -1,0 +1,77 @@
+\section{Methods}
+
+\subsection{MTDT Method}
+
+\subsubsection{Instruments and Languages}
+
+We evaluate the preservation of psychometric structural patterns using the Big Five Inventory-2 [14] in three languages: English, Chinese, and Turkish. The English item set and response format were sourced from [15]. For the non-English versions, we adopted the validated Chinese translation from [16] and the Turkish validation from [17]. Each version contains 60 items with a 5-point response scale.
+
+\subsubsection{Models}
+
+We evaluated a suite of open-weight LLMs across four model families and varying sizes: Gemma 3 (4B, 12B), Llama 3.2 (1B, 3B), Qwen 3 (4B, 8B, 14B), and Ministral 3 (3B, 8B, 14B). Each model was evaluated across the three language versions of the BFI-2 described above. All models were executed using vLLM as the inference backend. We used deterministic, single-step constrained decoding (max\_tokens=1, temperature=0) and restricted outputs to valid Likert response tokens via a structured choice set.
+
+\subsubsection{Prompting and MTDT Framework}
+
+For each item, we follow the Multi-Turn Decision Tracing (MTDT) framework [27], which models multi-item instruments as sequential decision processes and represents alternative response pathways as a directed graph $G = (V, E)$. We employ a minimal prompting strategy to preserve default generation patterns and translate system instructions to ensure cross-linguistic consistency. A history-aware conversation format appends each new item to prior dialogue.
+
+The English prompt template is structured as follows:
+
+\textbf{System:}
+
+Here are characteristics that may or may not apply to you. Please write a number between 1 and 5 to indicate the extent to which you agree or disagree with the following statement, 5 indicating strong agreement. Strictly output only the number. Do not explain your answer.
+
+\textbf{User:}
+
+Question: I am outgoing, sociable.
+
+Scale: 1: Disagree strongly; 2: Disagree a little; 3: Neutral; no opinion; 4: Agree a little; 5: Agree strongly
+
+\textbf{Assistant:}
+
+4
+
+\textbf{User:}
+
+Question: I am compassionate, have a soft heart.
+
+Scale: 1: Disagree strongly; 2: Disagree a little; 3: Neutral; no opinion; 4: Agree a little; 5: Agree strongly
+
+Each subsequent item is appended to the prior conversation history to preserve sequential context.
+
+\subsubsection{Multi-Turn Decision Tracing}
+
+At each item $q_i$, constrained response probabilities are used to retain up to top-$k$ responses exceeding threshold $\tau$, and resulting histories are propagated forward, yielding a response pattern network over the full instrument [27]. The vertices $V$ and edges $E$ are defined as:
+
+We adapt MTDT to the 60-item BFI-2 instrument. While [27] adopts $\tau = 10^{-4}$, we employ a more conservative pruning strategy to control combinatorial growth in a 60-turn dialogue, setting $\tau = 10^{-3}$ and limiting the branching factor to $k = 3$. Full procedural details of MTDT are provided in [27].
+
+\subsubsection{Cross-Language Similarity Assessment}
+
+To quantify cross-language preservation of psychometric structural patterns, we follow the aggregation and similarity procedure in [27]. For each question $q_i$ and response option $r_j$, probabilities are aggregated across all histories $H_i$ reaching $q_i$:
+
+From these values, we construct a response profile matrix, where rows represent Likert options and columns represent items, with entries [27]. Similarity between language-specific profiles is computed using the MTDT metric defined as the complement of the directed Hausdorff distance [27].
+
+\subsection{Traditional Method}
+
+\subsubsection{Evaluation Framework}
+
+To evaluate psychometric structure and behavior across respondent type (human vs. LLM) and language, we adopt a two-dimensional framework [26, 18], distinguishing structural similarity and behavioral alignment.
+
+\subsubsection{Models and Prompting}
+
+We evaluated three models across four languages (English, Spanish, Turkish, Chinese): GPT 5.1, DeepSeek-V3.2, and Mistral Small 3.2 (2506). Human comparison datasets were used for English, Chinese, and Turkish; Spanish data were drawn from [19]. Prompting followed a minimal, history-aware strategy analogous to the MTDT setup.
+
+\subsubsection{Structural Similarity}
+
+We compute psychometric “fingerprints” from item-level Pearson correlation matrices ($Q = 60$) and quantify similarity via cosine similarity [18, 20]. For each dataset $D$, we compute a correlation matrix and extract the upper-triangular elements:
+
+Similarity between and is computed via cosine [18, 20].
+
+To assess dimensionality recovery, we apply Exploratory Graph Analysis (EGA) [18, 21], estimating networks via graphical LASSO with EBIC model selection [22] and identifying communities using the Walktrap algorithm [23]. We also compute Cronbach’s alpha for each BFI-2 subscale [18] as an internal consistency measure.
+
+\subsubsection{Behavioral Alignment}
+
+Behavioral alignment evaluates distributional similarity across conditions. We compute the 1-Wasserstein distance ($W_1$) between ordinal Likert response distributions [26]. For item $q$:
+
+where $K = 5$. We transform $W_1$ into a normalized alignment score:
+
+Global and subscale-level alignment scores are computed by averaging $A(q)$ across items [26].

@@ -1,0 +1,17 @@
+\section{Introduction}
+
+Large language models (LLMs) are increasingly used as simulated survey respondents and behavioral proxies in natural language processing and computational social science [1]. Such applications promise scalable experimentation and rapid hypothesis testing, but their validity depends on whether model outputs exhibit coherent psychometric structure rather than merely plausible surface responses [2]. A central unresolved question is whether LLMs preserve the structural properties of established psychological instruments, particularly when evaluated across multiple languages [3].
+
+Prior work has primarily examined alignment, surface plausibility, and personality mimicry in model-generated responses [4]. However, important methodological questions remain. It is unclear whether LLM outputs preserve structural validity and cross-lingual stability when subjected to established psychometric inventories [3]. In particular, the extent to which models exhibit response invariance or maintain reverse-key coherence—the consistent handling of semantically opposing items—remains insufficiently studied [5]. Limitations in these properties may indicate constraints in structural coherence and raise concerns about whether model outputs reflect stable latent structure or learned linguistic regularities [3].
+
+To address these questions, we evaluate a diverse set of open- and closed-source models using the Big Five Inventory-2 (BFI-2), a 60-item instrument designed with balanced true- and reverse-keyed items to probe hierarchical personality structure [3]. We conduct a multilingual assessment across English, Turkish, Chinese, and Spanish to examine structural stability across languages. Our evaluation framework combines two complementary pipelines: Multi-Turn Decision Tracing (MTDT), which models responses as sequential decision pathways, and traditional history-aware prompting [6]. This dual approach enables systematic comparison with human baselines and assessment of psychometric patterns across languages and model families [3].
+
+We investigate the following research questions:
+
+RQ1: To what extent do LLMs demonstrate response invariance and maintain coherence between true-keyed and reverse-keyed items within psychometric instruments?
+
+RQ2: How stable is the internal psychometric structure of LLM responses when evaluated across languages?
+
+RQ3: What are the relative effects of model family and origin, compared to language choice and model size, on observed psychometric behavior?
+
+\paragraph{Contributions} This work provides the following contributions: (1) empirical identification of response invariance patterns across multiple LLM families; (2) analysis of reverse-key incoherence, demonstrating that models frequently affirm contradictory items; (3) cross-lingual structural comparison revealing psychometric differences between models and human baselines across English, Chinese, Turkish, and Spanish; (4) evidence that model family and origin exert stronger influence than prompted language or model size in shaping psychometric outcomes; and (5) a dual-pipeline evaluation framework combining MTDT and traditional prompting to assess structural consistency in complex survey settings.

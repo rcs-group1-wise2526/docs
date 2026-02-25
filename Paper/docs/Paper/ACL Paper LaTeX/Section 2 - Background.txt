@@ -1,0 +1,13 @@
+\section{Background}
+
+\subsection{The BFI-2 and Reverse-Key Structure}
+
+The Big Five Inventory-2 (BFI-2) is a 60-item instrument designed to assess the five-factor model of personality through a hierarchical structure of five domains and 15 nested facets [7, 8]. Respondents rate items on a 5-point Likert scale [7]. A central design feature of the BFI-2 is its balanced distribution of 30 true-keyed and 30 reverse-keyed items [7, 9]. This structure serves as a stringent test for simulated respondents: it requires consistent semantic discrimination, such that endorsement of a trait entails rejection of its conceptual opposite rather than adherence to a generalized response style [10].
+
+\subsection{Psychometric Structure and Response Invariance in LLM Simulation}
+
+As LLMs are increasingly used as behavioral proxies, evaluating construct validity is necessary to ensure that simulated responses are not artifacts of prompting or surface-level linguistic regularities [11, 12]. A critical failure mode in this setting is reverse-key inconsistency, where models exhibit an “agree bias” by affirming both a trait and its semantic opposite [3]. In addition, behavioral evaluation must account for degenerate or low-variance response patterns, in which models produce near-constant outputs that fail to approximate human-like distributions [3]. Identifying such patterns enables assessment of whether model responses exhibit coherent structural behavior or reflect superficial regularities in language modeling [3].
+
+\subsection{Multilingual Structural Stability}
+
+Cross-language comparability is essential for evaluating whether observed response patterns are stable across linguistic contexts [7]. This study utilizes validated BFI-2 translations in English, Turkish, Chinese, and Spanish to examine whether structural properties are preserved across language versions [7]. Assessing these patterns allows us to distinguish between effects attributable to prompted language and those arising from underlying model family and architectural origin [13]. Multilingual evaluation therefore functions as a methodological test of structural stability rather than a test of cultural theory, enabling clearer interpretation of model-level versus language-level influences on psychometric behavior.
