@@ -1,0 +1,4 @@
+\appendix
+\section{An Exploratory Graph Analysis}
+
+One technique we attempted to use to explore the dynamics of our chosen (traditionally prompted) LLMs’ psychometric properties was exploratory graph analysis. However, in the majority of cases, our model simulations suffered from too high a degree of output invariance to generate effective EGA diagrams for assessment. Nevertheless, the few outputs we were able to construct (from Mistral Small 3.2) do still help illustrate the observable differences between how psychological constructs are represented in human data and how they are in machine generated data. The grouping of psycho- logical attributes into fairly stable and identifiable categories in the human data is particularly evident in the given comparison as opposed to the interspersed and relatively undefined attribute groupings in the Mistral generated material.
